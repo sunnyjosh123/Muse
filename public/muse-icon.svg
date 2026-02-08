@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <!-- Main 4-pointed star -->
+  <path d="M50 8 C52.5 34, 66 47.5, 92 50 C66 52.5, 52.5 66, 50 92 C47.5 66, 34 52.5, 8 50 C34 47.5, 47.5 34, 50 8Z" fill="url(#g)"/>
+  <!-- Small sparkle top-right -->
+  <path d="M78 14 C79 20, 82.5 23.5, 88.5 24.5 C82.5 25.5, 79 29, 78 35 C77 29, 73.5 25.5, 67.5 24.5 C73.5 23.5, 77 20, 78 14Z" fill="url(#g)" opacity="0.8"/>
+  <!-- Small sparkle bottom-left -->
+  <path d="M22 65 C23 71, 26.5 74.5, 32.5 75.5 C26.5 76.5, 23 80, 22 86 C21 80, 17.5 76.5, 11.5 75.5 C17.5 74.5, 21 71, 22 65Z" fill="url(#g)" opacity="0.6"/>
+</svg>

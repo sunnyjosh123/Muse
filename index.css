@@ -1,0 +1,687 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #050505;
+  --text-color: #ffffff;
+  --neon-blue: #3b82f6;
+  --neon-purple: #a855f7;
+  --panel-bg: #0e0e12;
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --font-sans: "Space Grotesk", "Inter", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-serif: "Playfair Display", "Cinzel", "Times New Roman", "Georgia", "Noto Serif", "STSong", "Songti SC", serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Consolas", "Menlo", "Monaco", "SFMono-Regular", "Courier New", "Noto Sans Mono", monospace;
+  --font-comic: "Comic Neue", "Comic Sans MS", "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-ui: "Rajdhani", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif;
+  --font-tech: "Share Tech Mono", "Consolas", "Menlo", "Monaco", "Courier New", monospace;
+  --font-display: var(--font-serif);
+}
+
+/* --- THEME DEFINITIONS --- */
+
+/* 1. Cyberpunk / Tactical HUD - Refined */
+.theme-cyberpunk {
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0f;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --accent-primary: #00f0ff; /* Cyber Cyan */
+  --accent-secondary: #7000ff; /* Electric Purple */
+  --border-color: rgba(0, 240, 255, 0.2);
+  --btn-bg: rgba(0, 240, 255, 0.06);
+  --btn-border: rgba(0, 240, 255, 0.25);
+  --btn-hover-bg: rgba(0, 240, 255, 0.15);
+  --btn-hover-border: rgba(0, 240, 255, 0.5);
+  --btn-text: #00f0ff;
+  --btn-glow: 0 0 12px rgba(0, 240, 255, 0.2);
+  --glass-bg: rgba(5, 5, 10, 0.85);
+  --font-main: var(--font-sans);
+  --font-mono: var(--font-mono);
+  /* Use data URI for reliable grid */
+  --hud-grid: linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px; /* Essential for grid size */
+  --glass-gradient: linear-gradient(135deg, rgba(10, 15, 24, 0.6), rgba(5, 5, 5, 0.4));
+  --theme-bg-image: radial-gradient(ellipse at 20% 80%, rgba(0, 240, 255, 0.12) 0%, transparent 50%),
+                    radial-gradient(ellipse at 80% 20%, rgba(112, 0, 255, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 70%),
+                    linear-gradient(to bottom, #020408, #0a0e1a, #0f172a);
+  --theme-idle-image: url('/themes/idle-cyberpunk.jpg');
+}
+
+/* 2. Zen / Minimalist - Refined */
+.theme-zen {
+  --bg-primary: #fafafa;
+  --bg-secondary: #ffffff;
+  --text-primary: #27272a;
+  --text-secondary: #71717a;
+  --accent-primary: #10b981; /* Calming Emerald */
+  --accent-secondary: #f59e0b;
+  --border-color: rgba(0, 0, 0, 0.06);
+  --btn-bg: rgba(16, 185, 129, 0.06);
+  --btn-border: rgba(16, 185, 129, 0.2);
+  --btn-hover-bg: rgba(16, 185, 129, 0.12);
+  --btn-hover-border: rgba(16, 185, 129, 0.4);
+  --btn-text: #059669;
+  --btn-glow: 0 0 8px rgba(16, 185, 129, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --font-main: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --hud-grid: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  --glass-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(240, 240, 245, 0.6));
+  --theme-bg-image: radial-gradient(ellipse at 80% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+                    radial-gradient(ellipse at 20% 80%, rgba(245, 158, 11, 0.04) 0%, transparent 50%),
+                    linear-gradient(135deg, #fdfbf7 0%, #f0fdf4 50%, #f1f5f9 100%);
+  --theme-idle-image: url('/themes/idle-zen.jpg');
+}
+
+/* 3. Retro / Analog - Warm Cinematic Film */
+.theme-retro {
+  --bg-primary: #1a1410;
+  --bg-secondary: #141010;
+  --text-primary: #f5e6d3;
+  --text-secondary: #b8a08a;
+  --accent-primary: #e8a87c; /* Warm Copper */
+  --accent-secondary: #c9544d; /* Vintage Rose */
+  --border-color: rgba(232, 168, 124, 0.15);
+  --btn-bg: rgba(232, 168, 124, 0.06);
+  --btn-border: rgba(232, 168, 124, 0.2);
+  --btn-hover-bg: rgba(232, 168, 124, 0.14);
+  --btn-hover-border: rgba(232, 168, 124, 0.45);
+  --btn-text: #e8a87c;
+  --btn-glow: 0 0 10px rgba(232, 168, 124, 0.15);
+  --glass-bg: rgba(22, 18, 14, 0.92);
+  --font-main: var(--font-mono);
+  --font-mono: var(--font-mono);
+  --hud-grid: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(232, 168, 124, 0.03) 3px
+  );
+  background-size: 100% 4px;
+  --glass-gradient: linear-gradient(135deg, rgba(26, 20, 16, 0.85), rgba(20, 16, 12, 0.75));
+  --theme-bg-image: radial-gradient(ellipse at 25% 75%, rgba(232, 168, 124, 0.08) 0%, transparent 55%),
+                    radial-gradient(ellipse at 75% 25%, rgba(201, 84, 77, 0.06) 0%, transparent 55%),
+                    radial-gradient(circle at 50% 50%, rgba(180, 140, 100, 0.04) 0%, transparent 70%),
+                    linear-gradient(160deg, #1a1410 0%, #1e1814 40%, #221c16 100%);
+  --theme-idle-image: url('/themes/idle-retro.jpg');
+}
+
+/* Retro Polaroid Effect - Elegant Film Frame */
+.theme-retro .image-display-container {
+  border: 3px solid rgba(245, 230, 211, 0.12);
+  border-bottom: 3px solid rgba(245, 230, 211, 0.12);
+  border-radius: 4px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3), inset 0 0 30px rgba(232, 168, 124, 0.03);
+  transform: rotate(-0.5deg);
+  transition: all 0.5s ease;
+}
+.theme-retro .image-display-container::after {
+  content: "MUSE STUDIO";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(245, 230, 211, 0.4);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+@media (min-width: 1024px) {
+  .theme-retro .image-display-container {
+    border: 4px solid rgba(245, 230, 211, 0.1);
+    border-bottom: 4px solid rgba(245, 230, 211, 0.1);
+  }
+  .theme-retro .image-display-container::after {
+    bottom: 12px;
+    font-size: 10px;
+    letter-spacing: 4px;
+  }
+}
+
+/* 4. Alchemist Studio - Refined */
+.theme-alchemist {
+  --bg-primary: #0f0a1e;
+  --bg-secondary: #1a1025;
+  --text-primary: #fae8ff;
+  --text-secondary: #d8b4fe;
+  --accent-primary: #fbbf24; /* Mystic Gold */
+  --accent-secondary: #c026d3;
+  --border-color: rgba(251, 191, 36, 0.2);
+  --btn-bg: rgba(251, 191, 36, 0.08);
+  --btn-border: rgba(251, 191, 36, 0.25);
+  --btn-hover-bg: rgba(251, 191, 36, 0.18);
+  --btn-hover-border: rgba(251, 191, 36, 0.5);
+  --btn-text: #fbbf24;
+  --btn-glow: 0 0 12px rgba(251, 191, 36, 0.2);
+  --glass-bg: rgba(20, 10, 30, 0.85);
+  --font-main: var(--font-serif);
+  --font-mono: var(--font-mono);
+  --hud-grid: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z' fill='none' stroke='%23fbbf24' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E");
+  --glass-gradient: linear-gradient(135deg, rgba(26, 16, 37, 0.6), rgba(15, 10, 30, 0.5));
+  --theme-bg-image: radial-gradient(ellipse at 20% 80%, rgba(192, 132, 252, 0.15) 0%, transparent 45%),
+                    radial-gradient(ellipse at 80% 20%, rgba(251, 191, 36, 0.1) 0%, transparent 45%),
+                    radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.06) 0%, transparent 70%),
+                    linear-gradient(160deg, #0f0a1e 0%, #1e1040 40%, #2e1065 100%);
+  --theme-idle-image: url('/themes/idle-alchemist.jpg');
+}
+
+/* 5. Comic / Anime - Refined */
+.theme-comic {
+  --bg-primary: #fff0f5; /* Lavender Blush */
+  --bg-secondary: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #db2777;
+  --accent-primary: #ff00ff; /* Hot Pink */
+  --accent-secondary: #00ffff; /* Cyan */
+  --border-color: rgba(255, 0, 255, 0.4);
+  --btn-bg: rgba(255, 0, 255, 0.06);
+  --btn-border: rgba(255, 0, 255, 0.3);
+  --btn-hover-bg: rgba(255, 0, 255, 0.14);
+  --btn-hover-border: rgba(255, 0, 255, 0.5);
+  --btn-text: #db2777;
+  --btn-glow: 0 0 10px rgba(255, 0, 255, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --font-main: var(--font-comic);
+  --font-mono: var(--font-mono);
+  --hud-grid: radial-gradient(#ff00ff 20%, transparent 20%), radial-gradient(#ff00ff 20%, transparent 20%);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  --glass-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 240, 245, 0.7));
+  --theme-bg-image: radial-gradient(ellipse at 30% 30%, rgba(255, 0, 255, 0.06) 0%, transparent 50%),
+                    radial-gradient(ellipse at 70% 70%, rgba(0, 255, 255, 0.06) 0%, transparent 50%),
+                    conic-gradient(from 0deg at 50% 50%, #fff0f5 0deg, #fce7f3 60deg, #fff0f5 120deg, #ede9fe 180deg, #fff0f5 240deg, #fce7f3 300deg, #fff0f5 360deg);
+  --theme-idle-image: url('/themes/idle-comic.jpg');
+}
+
+/* 6. Game / Mechanical - Refined */
+.theme-game {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --text-primary: #e5e5e5;
+  --text-secondary: #a3a3a3;
+  --accent-primary: #ef4444; /* Aggressive Red */
+  --accent-secondary: #facc15; /* Warning Yellow */
+  --border-color: rgba(239, 68, 68, 0.5);
+  --btn-bg: rgba(239, 68, 68, 0.08);
+  --btn-border: rgba(239, 68, 68, 0.3);
+  --btn-hover-bg: rgba(239, 68, 68, 0.18);
+  --btn-hover-border: rgba(239, 68, 68, 0.55);
+  --btn-text: #ef4444;
+  --btn-glow: 0 0 12px rgba(239, 68, 68, 0.25);
+  --glass-bg: rgba(10, 10, 10, 0.9);
+  --font-main: var(--font-ui);
+  --font-mono: var(--font-tech);
+  --hud-grid: repeating-linear-gradient(45deg, rgba(239, 68, 68, 0.05) 0px, rgba(239, 68, 68, 0.05) 2px, transparent 2px, transparent 10px);
+  --glass-gradient: linear-gradient(135deg, rgba(17, 17, 17, 0.7), rgba(10, 10, 10, 0.6));
+  --theme-bg-image: radial-gradient(ellipse at 50% 0%, rgba(239, 68, 68, 0.1) 0%, transparent 50%),
+                    radial-gradient(ellipse at 50% 100%, rgba(250, 204, 21, 0.06) 0%, transparent 50%),
+                    repeating-linear-gradient(90deg, transparent 0, transparent 50px, rgba(239, 68, 68, 0.04) 50px, rgba(239, 68, 68, 0.04) 51px),
+                    linear-gradient(to bottom, #0a0a0a, #0d0d0d, #111111);
+  --theme-idle-image: url('/themes/idle-game.jpg');
+}
+
+body {
+  font-family: var(--font-main, var(--font-sans));
+  background-color: transparent; /* Changed from var(--bg-primary) to transparent */
+  color: var(--text-primary);
+  margin: 0;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile safe area for bottom toolbar */
+.safe-area-bottom {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
+/* Touch-friendly tap targets */
+@media (hover: none) and (pointer: coarse) {
+  .theme-btn {
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+
+html {
+  background-color: var(--bg-primary); /* Move background color here */
+  transition: background-color 0.5s ease;
+}
+
+/* Apply theme background pattern */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: var(--hud-grid);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.5;
+  background-attachment: fixed; /* Ensure it doesn't scroll away */
+}
+
+/* Custom scrollbar for cyberpunk feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Animations */
+@keyframes scanline {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(500%); opacity: 0; }
+}
+
+.animate-scan {
+  animation: scanline 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.6); border-color: rgba(59, 130, 246, 0.8); }
+}
+
+.animate-glow {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes text-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #60a5fa 25%, #e879f9 50%, #60a5fa 75%);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: text-shimmer 3s linear infinite;
+}
+
+/* ==== MUSE BRAND TEXT EFFECTS ==== */
+
+/* Muse gradient text (theme-aware) */
+.muse-gradient-text {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+/* Shimmer sweep animation on the Muse brand name when active */
+@keyframes muse-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.muse-shimmer-active {
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary) 0%,
+    var(--accent-secondary) 25%,
+    var(--accent-primary) 50%,
+    var(--accent-secondary) 75%,
+    var(--accent-primary) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: muse-shimmer 2.5s linear infinite;
+  font-weight: 700;
+}
+
+/* Subtle glow behind the status text when generating */
+@keyframes muse-glow-pulse {
+  0%, 100% { 
+    filter: drop-shadow(0 0 4px var(--accent-primary));
+    opacity: 0.7;
+  }
+  50% { 
+    filter: drop-shadow(0 0 8px var(--accent-primary)) drop-shadow(0 0 12px var(--accent-secondary));
+    opacity: 1;
+  }
+}
+
+.muse-glow {
+  animation: muse-glow-pulse 2s ease-in-out infinite;
+}
+
+/* Status bar active glow border */
+@keyframes muse-border-glow {
+  0%, 100% { 
+    border-top-color: var(--accent-primary);
+    box-shadow: 0 -1px 8px var(--accent-primary);
+    opacity: 0.6;
+  }
+  50% { 
+    border-top-color: var(--accent-primary);
+    box-shadow: 0 -1px 16px var(--accent-primary), 0 -1px 24px var(--accent-secondary);
+    opacity: 1;
+  }
+}
+
+@keyframes muse-idle-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.muse-border-active {
+  animation: muse-border-glow 3s ease-in-out infinite;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+}
+
+.neon-border {
+  box-shadow: 0 0 5px var(--accent-primary), 0 0 10px rgba(59, 130, 246, 0.3);
+  border: 1px solid var(--accent-primary);
+}
+
+/* ==== NEW ANIMATIONS FOR REASONING CORE ==== */
+
+/* Grid movement effect for background */
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(20px); }
+}
+
+/* Scanning line for thinking mode */
+@keyframes scanLine {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Bar pulse for audio visualizer effect */
+@keyframes barPulse {
+  0% { height: 4px; }
+  100% { height: 16px; }
+}
+
+/* Glow ring animation */
+@keyframes glowRing {
+  0%, 100% { box-shadow: 0 0 20px currentColor; }
+  50% { box-shadow: 0 0 40px currentColor, 0 0 60px currentColor; }
+}
+
+/* Gesture confirm ring spin */
+@keyframes confirmRingSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Thought typing cursor blink */
+@keyframes cursorBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Progress wave effect */
+@keyframes progressWave {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Custom scrollbar for small panels */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Hide scrollbar but allow scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.login-bg-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.login-bg-media {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.login-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.login-bg-placeholder {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6) contrast(1.1);
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  video.login-bg-media {
+    display: none;
+  }
+  .login-bg-placeholder {
+    display: block !important;
+  }
+}
+
+/* Intent Highlight Mode Transitions */
+.mode-detection {
+  transition: all 0.5s ease;
+}
+
+.mode-generation {
+  transition: all 0.5s ease;
+}
+
+.mode-generation .camera-panel {
+  filter: brightness(0.7) saturate(0.8);
+}
+
+/* Neon text glow effect */
+.text-neon {
+  text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+}
+
+/* --- THEME-AWARE TOOLBAR BUTTONS --- */
+
+/* Toolbar button base (applied via .theme-btn class) */
+.theme-btn {
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: var(--btn-text);
+  transition: all 0.25s ease;
+}
+.theme-btn:hover {
+  background: var(--btn-hover-bg);
+  border-color: var(--btn-hover-border);
+  box-shadow: var(--btn-glow);
+}
+.theme-btn svg {
+  color: var(--btn-text);
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.theme-btn:hover svg {
+  opacity: 1;
+}
+
+/* Zen override: softer look for light theme */
+.theme-zen .theme-btn {
+  backdrop-filter: blur(4px);
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* Prompt toolbar buttons — compact inline buttons */
+.prompt-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  line-height: 1;
+}
+.prompt-tool-btn:hover {
+  color: var(--text-primary);
+  background: var(--btn-bg);
+}
+.prompt-tool-btn svg,
+.prompt-tool-btn img {
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.prompt-tool-btn:hover svg,
+.prompt-tool-btn:hover img {
+  opacity: 1;
+}
+.prompt-tool-btn:disabled {
+  cursor: not-allowed;
+}
+@media (max-width: 480px) {
+  .prompt-tool-btn span {
+    display: none;
+  }
+  .prompt-tool-btn {
+    padding: 4px;
+  }
+}
+
+/* --- THEME SPECIFIC BACKGROUND ANIMATIONS --- */
+
+/* Cyberpunk: Digital Rain / Grid Scan */
+@keyframes cyber-grid-scroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 40px; }
+}
+
+.theme-cyberpunk body::before {
+  animation: cyber-grid-scroll 2s linear infinite;
+  opacity: 0.15;
+}
+
+/* Zen: Gentle Pulse */
+@keyframes zen-breathe {
+  0%, 100% { opacity: 0.03; transform: scale(1); }
+  50% { opacity: 0.08; transform: scale(1.02); }
+}
+
+.theme-zen body::before {
+  animation: zen-breathe 8s ease-in-out infinite;
+  background-size: 20px 20px;
+}
+
+/* Retro: Scanline Flicker */
+@keyframes retro-flicker {
+  0% { opacity: 0.03; }
+  5% { opacity: 0.05; }
+  10% { opacity: 0.03; }
+  15% { opacity: 0.06; }
+  100% { opacity: 0.03; }
+}
+
+.theme-retro body::before {
+  animation: retro-flicker 0.1s infinite;
+  background-size: 100% 4px;
+}
+
+/* Alchemist: Floating Runes (Simulated by slow gradient shift) */
+@keyframes alchemist-mist {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.theme-alchemist body::before {
+  background-size: 400% 400%;
+  animation: alchemist-mist 20s ease infinite;
+  opacity: 0.1;
+}
+
+/* Comic: Pop Art Shake */
+@keyframes comic-pop {
+  0%, 100% { background-position: 0 0; }
+  50% { background-position: 2px 2px; }
+}
+
+.theme-comic body::before {
+  animation: comic-pop 0.5s steps(2) infinite;
+  opacity: 0.1;
+}
+
+/* Game: Aggressive Scroll */
+@keyframes game-rush {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+.theme-game body::before {
+  animation: game-rush 0.5s linear infinite;
+  opacity: 0.1;
+}

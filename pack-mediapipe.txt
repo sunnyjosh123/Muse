@@ -1,0 +1,15 @@
+public\mediapipe\holistic\README.md
+public\mediapipe\holistic\holistic.binarypb
+public\mediapipe\holistic\holistic.js
+public\mediapipe\holistic\holistic_solution_packed_assets.data
+public\mediapipe\holistic\holistic_solution_packed_assets_loader.js
+public\mediapipe\holistic\holistic_solution_simd_wasm_bin.data
+public\mediapipe\holistic\holistic_solution_simd_wasm_bin.js
+public\mediapipe\holistic\holistic_solution_simd_wasm_bin.wasm
+public\mediapipe\holistic\holistic_solution_wasm_bin.js
+public\mediapipe\holistic\holistic_solution_wasm_bin.wasm
+public\mediapipe\holistic\index.d.ts
+public\mediapipe\holistic\package.json
+public\mediapipe\holistic\pose_landmark_full.tflite
+public\mediapipe\holistic\pose_landmark_heavy.tflite
+public\mediapipe\holistic\pose_landmark_lite.tflite
